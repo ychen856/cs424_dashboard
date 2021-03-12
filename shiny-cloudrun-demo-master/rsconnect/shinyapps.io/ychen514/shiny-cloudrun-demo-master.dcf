@@ -1,0 +1,12 @@
+name: shiny-cloudrun-demo-master
+title: shiny-cloudrun-demo-master
+username:
+account: ychen514
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3483383
+bundleId: 4110519
+url: https://ychen514.shinyapps.io/shiny-cloudrun-demo-master/
+when: 1610942694.03374
+asMultiple: FALSE
+asStatic: FALSE
