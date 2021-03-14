@@ -94,7 +94,82 @@ ui <- fluidPage(
                                                  
                                              )
                                   )
-                         ) #Total Amount page end
+                         ), #Total Amount page end
+                         #project 2 start
+                         tabPanel("Project 2", class="p-0",
+                                  mainPanel( class="panel p-0",
+                                             fluidRow(
+                                               #content start
+                                               column(12, class="p-0",
+                                                      tags$div(class="card border-title shadow",
+                                                               #card Start
+                                                               tags$div(class="card-body",
+                                                                        fluidRow(
+                                                                          column(3, class="p-0  pl-10",
+                                                                                 tags$div(class="title",
+                                                                                          tags$span(
+                                                                                            textOutput("Project2_header")
+                                                                                            
+                                                                                          )
+                                                                                 )
+                                                                          ),
+                                                                          column(9, class="p-0 pt-5",
+                                                                                 column(3,
+                                                                                        tags$div(class="p-0 pt-5",
+                                                                                                 actionButton("prject2_btn1", "Introduction and Description")
+                                                                                        ) 
+                                                                                 ),
+                                                                                 column(3,
+                                                                                        tags$div(class="p-0  pt-5",
+                                                                                                 actionButton("prject2_btn2", "About the Data")
+                                                                                        ) 
+                                                                                 ),
+                                                                                 column(3,
+                                                                                        tags$div(class="p-0  pt-5",
+                                                                                                 actionButton("prject2_btn3", "Interesting Things")
+                                                                                        ) 
+                                                                                 ),
+                                                                                 column(3,
+                                                                                        tags$div(class="p-0 pt-5",
+                                                                                                 actionButton("prject2_btn4", "Source Code") 
+                                                                                        ) 
+                                                                                 )
+                                                                                 
+                                                                          )
+                                                                          
+                                                                        ), #Row End
+                                                                        tags$div(class="subtitle",
+                                                                                 textOutput("Project2_subHeader1")
+                                                                        ),
+                                                                        tags$div(class="text-content",
+                                                                                 tags$div(
+                                                                                   tags$span(class="cust-text", textOutput("Project2_custText1")),
+                                                                                   tags$span(class="p-5", uiOutput("tab1_2"))
+                                                                                 )
+                                                                        ),
+                                                                        tags$div(class="subtitle",
+                                                                                 textOutput("Project2_subHeader2")
+                                                                        ),
+                                                                        tags$div(class="text-content",
+                                                                                 tags$div(
+                                                                                   tags$span(class="cust-text", textOutput("Project2_custText2")),
+                                                                                   tags$span(class="p-5", uiOutput("tab2_2")),
+                                                                                   tags$br(),tags$br(),
+                                                                                   tags$span(class="cust-text", textOutput("Project2_custText3")),
+                                                                                   tags$span(class="p-5", uiOutput("tab3_2")),
+                                                                                   tags$br(),tags$br(),
+                                                                                   tags$span(class="cust-text", textOutput("Project2_custText4")),
+                                                                                   tags$span(class="p-5", uiOutput("tab4_2")),
+                                                                                   
+                                                                                 )
+                                                                        )
+                                                               )
+                                                      )
+                                               )#content end
+                                               
+                                             )
+                                  )
+                         ) #project 2 page end
                          
                          
                 )
@@ -103,12 +178,15 @@ ui <- fluidPage(
 )
 
 server <- function(input, output) {
+##########################################
+    #project 1
+    #####################################
     git_url <- a("https://github.com/ychen856/cs424_project_1.git", href="https://github.com/ychen856/cs424_project_1.git")
     r_url <- a("https://www.r-project.org/", "https://www.r-project.org/")
-    rStudio_url <- a("https://rstudio.com/products/rstudio/", herf="https://rstudio.com/products/rstudio/")
-    project_url <- a("https://ychen514.shinyapps.io/cs424_project_1/", herf="https://ychen514.shinyapps.io/cs424_project_1/")
-    video_url <- a("https://youtu.be/uFQpZoTaYoc", herf="https://youtu.be/uFQpZoTaYoc")
-    dataSource_url <- a("https://www.evl.uic.edu/aej/424/annual_generation_state.csv", herf="https://www.evl.uic.edu/aej/424/annual_generation_state.csv")
+    rStudio_url <- a("https://rstudio.com/products/rstudio/", href="https://rstudio.com/products/rstudio/")
+    project_url <- a("https://ychen514.shinyapps.io/cs424_project_1/", href="https://ychen514.shinyapps.io/cs424_project_1/")
+    video_url <- a("https://youtu.be/uFQpZoTaYoc", href="https://youtu.be/uFQpZoTaYoc")
+    dataSource_url <- a("https://www.evl.uic.edu/aej/424/annual_generation_state.csv", href="https://www.evl.uic.edu/aej/424/annual_generation_state.csv")
     #header
     output$Project1_header <- renderText({ 
         "Introduction and Description"
@@ -165,12 +243,7 @@ server <- function(input, output) {
   
         ))
     })
-    
-    
-    
-    
-    
-    
+
     ##################################################
     #intro
     observeEvent(input$prject1_btn1, { 
@@ -408,6 +481,316 @@ server <- function(input, output) {
             ))
         })
         output$tab4 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt6)), img(src='img1.png', height = '300px'),
+                         shiny::HTML(gsub("\n", "<br/>", txt7)), img(src='img7.png', height = '300px')
+                         
+            ))
+        })
+    })
+
+    ##############################################
+    #project 2
+    ##############################################
+    git_url_2 <- a("https://github.com/ychen856/cs424_project_2.git", href="https://github.com/ychen856/cs424_project_2.git")
+    r_url_2 <- a("https://www.r-project.org/", href="https://www.r-project.org/")
+    rStudio_url_2 <- a("https://rstudio.com/products/rstudio/", href="https://rstudio.com/products/rstudio/")
+    project_url_2 <- a("https://ychen514.shinyapps.io/cs424_project_2/", href="https://ychen514.shinyapps.io/cs424_project_2/")
+    video_url_2 <- a("https://youtu.be/GBBLsuShUsk", href="https://youtu.be/GBBLsuShUsk")
+    dataSource_url_2 <- a("https://www.epa.gov/egrid/download-data", href="https://www.epa.gov/egrid/download-data")
+    #header
+    output$Project2_header <- renderText({ 
+        "Introduction and Description"
+    })
+    
+    #Sub Header
+    output$Project2_subHeader1 <- renderText({ 
+        "Access the project: "
+    })
+    output$Project2_subHeader2 <- renderText({ 
+        "About this project: "
+    })  
+    
+    #cust text
+    output$Project2_custText1 <- renderText({ 
+        "Demo URL: "
+    })
+    output$Project2_custText2 <- renderText({ 
+        "Introduction Video: "
+    })
+    output$Project2_custText3 <- renderText({ 
+        ""
+    })
+    
+    output$Project2_custText4 <- renderText({ 
+        ""
+    })
+
+    txt1_2 <- "The project is to make people have a clear view of energy plant distribution in the US in past few years. \n
+                The first page is focusing on the location of energy plants in Illinois 2018. The location markers are categorized by different colors to represent the different energy sources. In the check box, it allows people to select all energy sources, renewable energy sources, and non-renewable energy sources. Every marker is 0.5 opacity, so if two energy sources sit on the same location. You can see its color is different from others. And you can zoom in, markers' slightly shift. You can see which energy sources are there. If you zoom in or zoom out a lot and cannot locate yourself. The \"Reset view\" button can help you return to the original location.\n"
+
+    txt2_2 <- "\n\nOn the second page, it allows you to compare two maps. In each map, you can choose years, states, energy sources, and types of map. If the sync checkbox is unselected, energy source options can only affect its side. If the sync button is selected, the energy source checkboxes will affect both sides. Ether you pick the left checkboxes or right checkboxes. The reset view button also available in both maps. \n"
+    
+    txt3_2 <- "\n\nThe \"energy plants in US\" page gives you more options to filter out the data. It provides years, states (50 states + the full US), energy sources, and energy generation range. You have two ways to use the sliders. First, the default is to bypass the between values. The left slider is to select the minimum value in this range, and the right slider is to select the maximum value in this range. Two sliders work together to guarantee that you can select range whatever you want. The second way, bypass values that are smaller than the left slider or larger than the right slider. Two sliders also work together and every combination is available.\n"
+    
+    txt4_2 <- "\n\nThe \"idle & new plants page\", allows you to see the new and idle plants in the selected year compares to the previous dataset. For example, if you choose 2018, the previous dataset is 2010. The new plants mean they did not exist in 2010, and they existed in 2018. The idle plants mean that they worked in 2010 but being idle in 2018. If you choose 2010, then it will compare to 2000.\n"
+
+    output$tab1_2 <- renderUI({
+        tagList(project_url_2)
+    })
+    
+    output$tab2_2 <- renderUI({
+        tagList(video_url_2)
+    })
+    output$tab3_2 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1_2)), img(src='img2_1.png', height = '300px'), img(src='img2_2.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt2_2)), img(src='img2_3.png', height = '300px'), img(src='img2_4.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt3_2)), img(src='img2_5.png', height = '300px'), img(src='img2_6.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt4_2)), img(src='img2_7.png', height = '300px'), img(src='img2_8.png', height = '300px')
+        ))
+    })
+    output$tab4_2 <- renderUI({
+        tagList(list(
+  
+        ))
+    })
+
+    ##################################################
+    #intro
+    observeEvent(input$prject2_btn1, { 
+         #header
+        output$Project2_header <- renderText({ 
+            "Introduction and Description"
+        })
+    
+        #Sub Header
+        output$Project2_subHeader1 <- renderText({ 
+            "Access the project: "
+        })
+        output$Project2_subHeader2 <- renderText({ 
+            "About this project: "
+        })  
+    
+        #cust text
+        output$Project2_custText1 <- renderText({ 
+            "Demo URL: "
+        })
+        output$Project2_custText2 <- renderText({ 
+            "Introduction Video: "
+        })
+        output$Project2_custText3 <- renderText({ 
+            ""
+        })
+    
+        output$Project2_custText4 <- renderText({ 
+            ""
+        })
+        
+        txt1_2 <- "The project is to make people have a clear view of energy plant distribution in the US in past few years. \n
+                The first page is focusing on the location of energy plants in Illinois 2018. The location markers are categorized by different colors to represent the different energy sources. In the check box, it allows people to select all energy sources, renewable energy sources, and non-renewable energy sources. Every marker is 0.5 opacity, so if two energy sources sit on the same location. You can see its color is different from others. And you can zoom in, markers' slightly shift. You can see which energy sources are there. If you zoom in or zoom out a lot and cannot locate yourself. The \"Reset view\" button can help you return to the original location.\n"
+
+        txt2_2 <- "\n\nOn the second page, it allows you to compare two maps. In each map, you can choose years, states, energy sources, and types of map. If the sync checkbox is unselected, energy source options can only affect its side. If the sync button is selected, the energy source checkboxes will affect both sides. Ether you pick the left checkboxes or right checkboxes. The reset view button also available in both maps. \n"
+    
+        txt3_2 <- "\n\nThe \"energy plants in US\" page gives you more options to filter out the data. It provides years, states (50 states + the full US), energy sources, and energy generation range. You have two ways to use the sliders. First, the default is to bypass the between values. The left slider is to select the minimum value in this range, and the right slider is to select the maximum value in this range. Two sliders work together to guarantee that you can select range whatever you want. The second way, bypass values that are smaller than the left slider or larger than the right slider. Two sliders also work together and every combination is available.\n"
+    
+        txt4_2 <- "\n\nThe \"idle & new plants page\", allows you to see the new and idle plants in the selected year compares to the previous dataset. For example, if you choose 2018, the previous dataset is 2010. The new plants mean they did not exist in 2010, and they existed in 2018. The idle plants mean that they worked in 2010 but being idle in 2018. If you choose 2010, then it will compare to 2000.\n"
+
+        output$tab1_2 <- renderUI({
+            tagList(project_url_2)
+        })
+    
+        output$tab2_2 <- renderUI({
+            tagList(video_url_2)
+        })
+        output$tab3_2 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1_2)), img(src='img2_1.png', height = '300px'), img(src='img2_2.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt2_2)), img(src='img2_3.png', height = '300px'), img(src='img2_4.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt3_2)), img(src='img2_5.png', height = '300px'), img(src='img2_6.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt4_2)), img(src='img2_7.png', height = '300px'), img(src='img2_8.png', height = '300px')
+            ))
+        })
+        output$tab4_2 <- renderUI({
+            tagList(list(
+            
+            ))
+        })
+    })
+    
+    #data
+    observeEvent(input$prject2_btn2, {
+        #header
+        output$Project2_header <- renderText({ 
+            "About the Data"
+        })
+        
+        #Sub Header
+        output$Project2_subHeader1 <- renderText({ 
+            ""
+        })
+        output$Project2_subHeader2 <- renderText({ 
+            ""
+        })  
+        
+        #cust text
+        output$Project2_custText1 <- renderText({ 
+            "Data Source: "
+        })
+        output$Project2_custText2 <- renderText({ 
+            "Data Usage: "
+        })
+        output$Project2_custText3 <- renderText({ 
+            ""
+        })
+        
+        output$Project2_custText4 <- renderText({ 
+            ""
+        })
+        
+        txt1 <- "The original data is very detailed. The amount of energy generation will be categorized by year, energy source, and type of producer.\n"
+        txt2 <- "\n\nFirst, we have the clean the data. Change the column name to something work on shiny. We have to eliminate the data that is not necessary for our usage. e.g. the generation is null, the state is US-TOTAL or US-Total. Also, we have to delete the type of producer column to remove the redundant data.\n"
+        txt3 <- "\n\nSecond, we have to get the distinct value of years, states, and energy source. Those values will be used on filters in the user interface and as the replacement data in the server part for the customized option that are not in the data set. \n"
+        
+        txt4 <- "\n\nThird, we have to generate the data that match the form we want. 
+                    (b) Energy generation of each energy source each year and  each state states
+                    (a) Energy generation of each energy source in each year.
+                    (c) the energy source of each energy source per state, the total energy generation per state, and total generation per year\n"
+        txt5 <- "\n\n(a) is used for the amount presenting, The overview of the data. We still need to adjust the table by adding a column for the sum of the energy generation column by years. And add another column for the sum of the energy generation by years and states. \n"
+        txt6 <- "\n\n(b) is based on (a). This data set is used for ratio presenting especially for line charts. We only keep one row for each state and year and remove the repeated column.  \n"
+        txt7 <- "\n\n(c) is used for heatmaps. It contains the most columns. However, the heatmap needs very clean data, the data set should not have a repeated state(as the id). Therefore, we will delete some columns and remove duplicate rows by the condition of the data representation requirement.\n"
+        
+        output$tab1_2 <- renderUI({
+            tagList(dataSource_url_2)
+        })
+
+        output$tab2_2 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img18.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt2)),
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), 
+                         shiny::HTML(gsub("\n", "<br/>", txt4)), 
+                         shiny::HTML(gsub("\n", "<br/>", txt5)),
+                         shiny::HTML(gsub("\n", "<br/>", txt6)),
+                         shiny::HTML(gsub("\n", "<br/>", txt6))
+            ))
+        })
+        output$tab3_2 <- renderUI({
+        })
+        output$tab4_2 <- renderUI({
+        })
+    })
+    
+    #interesting things
+    observeEvent(input$prject2_btn3, {
+        output$Project2_header <- renderText({ 
+            "Interesting Things"
+        })
+        #header
+        output$Project2_header <- renderText({ 
+            "5 Interesting Things"
+        })
+        
+        #Sub Header
+        output$Project2_subHeader1 <- renderText({ 
+            ""
+        })
+        output$Project2_subHeader2 <- renderText({ 
+            ""
+        })  
+        
+        #cust text
+        output$Project2_custText1 <- renderText({ 
+            ""
+        })
+        output$Project2_custText2 <- renderText({ 
+            ""
+        })
+        output$Project2_custText3 <- renderText({ 
+            ""
+        })
+        
+        output$Project2_custText4 <- renderText({ 
+            ""
+        })
+        
+        txt1 <- "In the past two decades, the percentage of each energy source changes a lot (Chart 1). However, it does not seems to affect the energy usage distribution for the whole country. The color distributes in chart 2 in a different year still looked the same. Therefore, I guess each state was all shifting their energy source from one to another.\n"
+        txt2 <- "\n\nNatural gas was keeping replacing the coal. The amount (Chart 1) and percentage (Chart 2) of two energy sources crossed in 2015. It is a good thing. Since US Energy Information Administration website shows that Burning natural gas for energy results in fewer emissions of nearly all types of air pollutants and carbon dioxide (CO2) than burning coal or petroleum products to produce an equal amount of energy.\n"
+        txt3 <- "\n\nThe amount of nuclear is increasing. It is reasonable, because nuclear is considered as a \"clean energy\", and also highly efficient. The amount of nuclear energy production increased from 1990 to 2019 (Chart 1). However, from the heat map, we can see some of the states used nuclear as an energy sourcein 1990 by they did not use it anymore in 2019 (Chart 2).\n"
+        
+        txt4 <- "\n\nThe energy from wind increased, although 600 million, compares to other energy sources, is very small (Chart 1). we still see that this kind of energy has become popular in most of the states from 1990 to 2019 (Chart 2).\n"
+        txt5 <- "\n\nThe energy production of Texas keeps increasing. From data 1 chart 2, we can see that the total energy production in the US is almost saturation, so did most of the states. However, in Texas, we do not discover this sign. The increasing amount of energy production did not even slow down (Data 2 Chart 1). In Chart 2, we can see, the color of most states does not change a lot, but Texas seems to increase about 1/3.\n"
+        
+        output$tab1_2 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img13.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img14.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img15.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img16.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt5)), img(src='img17.png', height = '300px')
+            ))
+        })
+        
+        output$tab2_2 <- renderUI({
+           
+        })
+        output$tab3_2 <- renderUI({
+            
+        })
+        output$tab4_2 <- renderUI({
+            
+        })
+        
+    })
+    
+    #source code
+    observeEvent(input$prject2_btn4, {
+        #header
+        output$Project2_header <- renderText({ 
+            "Source Code"
+        })
+        
+        #Sub Header
+        output$Project2_subHeader1 <- renderText({ 
+            "Source"
+        })
+        output$Project2_subHeader2 <- renderText({ 
+            "SetUp"
+        })  
+        
+        #cust text
+        output$Project2_custText1 <- renderText({ 
+            "Github Repository: "
+        })
+        output$Project2_custText2 <- renderText({ 
+            "Install R: "
+        })
+        output$Project2_custText3 <- renderText({ 
+            "Install Shiny: "
+        })
+        output$Project2_custText4 <- renderText({ 
+            "Setup The Project: "
+        })
+        
+        output$tab1_2 <- renderUI({
+            tagList(git_url_2)
+        })
+        txt1 <- ". Click \"download R\".\n"
+        txt2 <- "\n\nYou can select the default link \"0-Cloud\".\n"
+        txt3 <- "\n\nDownload and install a version that match you OS.\n"
+        
+        txt4 <- "\n"
+        txt5 <- "\n\nYou and down load the free version.\n"
+        
+        txt6 <- "Create a workspace folder that you want the project lacate at. Open the termial, set the direction the the created folder. Run the commendline \"git clone https://github.com/ychen856/cs424_project_1.git\". \n"
+        txt7 <- "\n\nOpen the R studio and open the exixting file -> import cs424. \n Rstudio will tell you that you are missing some packages, click the auto install on the top of the frame to set them up. Then, you can click the \"Run App\" to start a localhost shiny project.\n"
+        output$tab2_2 <- renderUI({
+            tagList(list("Download the R from", r_url_2, shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img2.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img3.png', height = '300px'),
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img4.png', height = '300px')
+            ))
+        })
+        output$tab3_2 <- renderUI({
+            tagList(list("Download R studio from", rStudio_url, shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img5.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt5)), img(src='img6.png', height = '300px')
+            ))
+        })
+        output$tab4_2 <- renderUI({
             tagList(list(shiny::HTML(gsub("\n", "<br/>", txt6)), img(src='img1.png', height = '300px'),
                          shiny::HTML(gsub("\n", "<br/>", txt7)), img(src='img7.png', height = '300px')
                          
