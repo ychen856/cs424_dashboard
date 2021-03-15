@@ -358,7 +358,7 @@ server <- function(input, output) {
                          shiny::HTML(gsub("\n", "<br/>", txt4)), 
                          shiny::HTML(gsub("\n", "<br/>", txt5)),
                          shiny::HTML(gsub("\n", "<br/>", txt6)),
-                         shiny::HTML(gsub("\n", "<br/>", txt6))
+                         shiny::HTML(gsub("\n", "<br/>", txt7))
             ))
         })
         output$tab3 <- renderUI({
@@ -645,30 +645,29 @@ server <- function(input, output) {
             ""
         })
         
-        txt1 <- "The original data is very detailed. The amount of energy generation will be categorized by year, energy source, and type of producer.\n"
-        txt2 <- "\n\nFirst, we have the clean the data. Change the column name to something work on shiny. We have to eliminate the data that is not necessary for our usage. e.g. the generation is null, the state is US-TOTAL or US-Total. Also, we have to delete the type of producer column to remove the redundant data.\n"
-        txt3 <- "\n\nSecond, we have to get the distinct value of years, states, and energy source. Those values will be used on filters in the user interface and as the replacement data in the server part for the customized option that are not in the data set. \n"
+        txt1 <- "The data of 2000 is from the \"eGRID historical files (1996-2016) (ZIP)\" link, eGRID2000_plant.xls file/EGRDPLNT00 tab.\n"
+        txt2 <- "2010 is from the \"Download eGRID historical files (1996-2016) (ZIP)\" link, eGRID2010_Data.xls file/EGRDPLNT10 tab.\n"
+        txt3 <- "2018 is from the \"Download eGRID2018v2 Data File (XLSX)\" link, eGRID2000_plant.xls file, and its EGRDPLNT00 tab.\n"
         
-        txt4 <- "\n\nThird, we have to generate the data that match the form we want. 
-                    (b) Energy generation of each energy source each year and  each state states
-                    (a) Energy generation of each energy source in each year.
-                    (c) the energy source of each energy source per state, the total energy generation per state, and total generation per year\n"
-        txt5 <- "\n\n(a) is used for the amount presenting, The overview of the data. We still need to adjust the table by adding a column for the sum of the energy generation column by years. And add another column for the sum of the energy generation by years and states. \n"
-        txt6 <- "\n\n(b) is based on (a). This data set is used for ratio presenting especially for line charts. We only keep one row for each state and year and remove the repeated column.  \n"
-        txt7 <- "\n\n(c) is used for heatmaps. It contains the most columns. However, the heatmap needs very clean data, the data set should not have a repeated state(as the id). Therefore, we will delete some columns and remove duplicate rows by the condition of the data representation requirement.\n"
+        txt4 <- "\n\nEach dataset has a huge number of columns. First, we have to eliminate those columns that will not be used in our project.\n"
+        txt5 <- "\n\nSince all data are in type character. We need to convert every generation, latitude, lontitude, renewable/non-renewable percentage into a number type. Then we have to delete rows whose longitude or a latitude is null. \n"
+        txt6 <- "\n\nSince the leaflet still shows the maker when the value is zero. In this case, we don't want to show them because zero means that this plant is not that energy plant, it should not appear on the map when the checkbox selects that source. Then, we have to make generation data that are 0 to N/A, so the leaflet will not show that plant.  \n"
+        txt7 <- "\n\nBecause we have a page requires to compare the current dataset and the previous dataset. We need to compare data by the ORIS_CODE column.\n"
+        txt8 <- "\n\nWhen we need to color each maker by type, we have to melt the generation columns into one column and add a new column to indicate their type. And listen to the checkbox, only bind columns that their type is selected into a new table that can apply to leaflet function.\n"
         
         output$tab1_2 <- renderUI({
             tagList(dataSource_url_2)
         })
 
         output$tab2_2 <- renderUI({
-            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img18.png', height = '300px'), 
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)),
                          shiny::HTML(gsub("\n", "<br/>", txt2)),
-                         shiny::HTML(gsub("\n", "<br/>", txt3)), 
-                         shiny::HTML(gsub("\n", "<br/>", txt4)), 
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img2_14.png', height = '300px'),
+                         shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img2_13.png', height = '300px'),
                          shiny::HTML(gsub("\n", "<br/>", txt5)),
                          shiny::HTML(gsub("\n", "<br/>", txt6)),
-                         shiny::HTML(gsub("\n", "<br/>", txt6))
+                         shiny::HTML(gsub("\n", "<br/>", txt7)),
+                         shiny::HTML(gsub("\n", "<br/>", txt8))
             ))
         })
         output$tab3_2 <- renderUI({
@@ -710,19 +709,15 @@ server <- function(input, output) {
             ""
         })
         
-        txt1 <- "In the past two decades, the percentage of each energy source changes a lot (Chart 1). However, it does not seems to affect the energy usage distribution for the whole country. The color distributes in chart 2 in a different year still looked the same. Therefore, I guess each state was all shifting their energy source from one to another.\n"
-        txt2 <- "\n\nNatural gas was keeping replacing the coal. The amount (Chart 1) and percentage (Chart 2) of two energy sources crossed in 2015. It is a good thing. Since US Energy Information Administration website shows that Burning natural gas for energy results in fewer emissions of nearly all types of air pollutants and carbon dioxide (CO2) than burning coal or petroleum products to produce an equal amount of energy.\n"
-        txt3 <- "\n\nThe amount of nuclear is increasing. It is reasonable, because nuclear is considered as a \"clean energy\", and also highly efficient. The amount of nuclear energy production increased from 1990 to 2019 (Chart 1). However, from the heat map, we can see some of the states used nuclear as an energy sourcein 1990 by they did not use it anymore in 2019 (Chart 2).\n"
+        txt1 <- "There are many new plants in 2000~2010 and 2010~2018, but their energy source has lots of difference. New plants from 2000 to 2010, focus on gas generation. And most of the new plants from 2010 to 2018 use wind as the source. Wind always has a lower number of productions in each plant, but they have a higher density than plants that use non-renewable energy sources.\n"
+        txt2 <- "\n\nThe west coast and east coast have high density and number of plants and few of them using coal. The Mideast also has a huge amount of energy generation and most of them using coal. And the Midwest has few plants compare to other areas. \n"
+        txt3 <- "\n\nThe plants that have high energy generation, most of them using biomass,  hydro, coal, and gas as the source. \n"
         
-        txt4 <- "\n\nThe energy from wind increased, although 600 million, compares to other energy sources, is very small (Chart 1). we still see that this kind of energy has become popular in most of the states from 1990 to 2019 (Chart 2).\n"
-        txt5 <- "\n\nThe energy production of Texas keeps increasing. From data 1 chart 2, we can see that the total energy production in the US is almost saturation, so did most of the states. However, in Texas, we do not discover this sign. The increasing amount of energy production did not even slow down (Data 2 Chart 1). In Chart 2, we can see, the color of most states does not change a lot, but Texas seems to increase about 1/3.\n"
         
         output$tab1_2 <- renderUI({
-            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img13.png', height = '300px'), 
-                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img14.png', height = '300px'), 
-                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img15.png', height = '300px'), 
-                         shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img16.png', height = '300px'), 
-                         shiny::HTML(gsub("\n", "<br/>", txt5)), img(src='img17.png', height = '300px')
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img2_9.png', height = '300px'), img(src='img2_10.png', height = '300px'),
+                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img2_11.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img2_12.png', height = '300px')
             ))
         })
         
@@ -777,7 +772,7 @@ server <- function(input, output) {
         txt4 <- "\n"
         txt5 <- "\n\nYou and down load the free version.\n"
         
-        txt6 <- "Create a workspace folder that you want the project lacate at. Open the termial, set the direction the the created folder. Run the commendline \"git clone https://github.com/ychen856/cs424_project_1.git\". \n"
+        txt6 <- "Create a workspace folder that you want the project lacate at. Open the termial, set the direction the the created folder. Run the commendline \"git clone https://github.com/ychen856/cs424_project_2.git\". \n"
         txt7 <- "\n\nOpen the R studio and open the exixting file -> import cs424. \n Rstudio will tell you that you are missing some packages, click the auto install on the top of the frame to set them up. Then, you can click the \"Run App\" to start a localhost shiny project.\n"
         output$tab2_2 <- renderUI({
             tagList(list("Download the R from", r_url_2, shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img2.png', height = '300px'), 
@@ -791,8 +786,8 @@ server <- function(input, output) {
             ))
         })
         output$tab4_2 <- renderUI({
-            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt6)), img(src='img1.png', height = '300px'),
-                         shiny::HTML(gsub("\n", "<br/>", txt7)), img(src='img7.png', height = '300px')
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt6)),
+                         shiny::HTML(gsub("\n", "<br/>", txt7))
                          
             ))
         })
