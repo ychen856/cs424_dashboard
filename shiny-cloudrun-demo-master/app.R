@@ -63,19 +63,19 @@ ui <- fluidPage(
                                                                         )
                                                                         
                                                                  ), #Row End
-                                                                 tags$div(class="subtitle",
+                                                                 tags$div(class="subtitle", style = "padding: 2% 15%",
                                                                         textOutput("Project1_subHeader1")
                                                                  ),
-                                                                 tags$div(class="text-content",
+                                                                 tags$div(class="text-content", style = "padding: 2% 15%",
                                                                         tags$div(
                                                                             tags$span(class="cust-text", textOutput("Project1_custText1")),
                                                                             tags$span(class="p-5", uiOutput("tab1"))
                                                                         )
                                                                  ),
-                                                                 tags$div(class="subtitle",
+                                                                 tags$div(class="subtitle", style = "padding: 2% 15%",
                                                                           textOutput("Project1_subHeader2")
                                                                  ),
-                                                                 tags$div(class="text-content",
+                                                                 tags$div(class="text-content", style = "padding: 2% 15%",
                                                                           tags$div(
                                                                               tags$span(class="cust-text", textOutput("Project1_custText2")),
                                                                               tags$span(class="p-5", uiOutput("tab2")),
@@ -138,19 +138,19 @@ ui <- fluidPage(
                                                                           )
                                                                           
                                                                         ), #Row End
-                                                                        tags$div(class="subtitle",
+                                                                        tags$div(class="subtitle", style = "padding: 2% 15%",
                                                                                  textOutput("Project2_subHeader1")
                                                                         ),
-                                                                        tags$div(class="text-content",
+                                                                        tags$div(class="text-content", style = "padding: 2% 15%",
                                                                                  tags$div(
                                                                                    tags$span(class="cust-text", textOutput("Project2_custText1")),
                                                                                    tags$span(class="p-5", uiOutput("tab1_2"))
                                                                                  )
                                                                         ),
-                                                                        tags$div(class="subtitle",
+                                                                        tags$div(class="subtitle", style = "padding: 2% 15%",
                                                                                  textOutput("Project2_subHeader2")
                                                                         ),
-                                                                        tags$div(class="text-content",
+                                                                        tags$div(class="text-content", style = "padding: 2% 15%",
                                                                                  tags$div(
                                                                                    tags$span(class="cust-text", textOutput("Project2_custText2")),
                                                                                    tags$span(class="p-5", uiOutput("tab2_2")),
@@ -169,8 +169,134 @@ ui <- fluidPage(
                                                
                                              )
                                   )
-                         ) #project 2 page end
-                         
+                         ), #project 2 page end
+                        #Student's Choice start
+                         tabPanel("Student's Choice", class="p-0",
+                                  mainPanel( class="panel p-0",
+                                             fluidRow(
+                                               #content start
+                                               column(12, class="p-0",
+                                                      tags$div(class="card border-title shadow",
+                                                               #card Start
+                                                               tags$div(class="card-body",
+                                                                        fluidRow(
+                                                                          column(11, class="p-0  pl-10",
+                                                                                 tags$div(class="title",
+                                                                                          tags$span(
+                                                                                            textOutput("student_choice_header")
+                                                                                            
+                                                                                          )
+                                                                                 )
+                                                                          ),
+                                                                          column(1, class = "p-0  pl-10",
+                                                                            "04/08/2021"
+                                                                          )
+                                                                        ), #Row End
+
+
+                                                                        #picture
+                                                                        tags$div(class="text-content", style = "padding: 0% 15%",
+                                                                                 tags$div(
+                                                                                   tags$span(class="p-5", uiOutput("student_choice_header_pic"))
+                                                                                 )
+                                                                        ),
+
+                                                                        #purpose
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader1")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                   tags$span(class="p-5", uiOutput("student_choice_header_content1"))
+                                                                        ),
+
+
+                                                                        #how data collected
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader3")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                   tags$span(class="p-5", uiOutput("student_choice_header_content3"))
+                                                                        ),
+
+
+                                                                        #About data
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader2")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                   tags$span(class="p-5", uiOutput("student_choice_header_content2"))
+                                                                        ),
+
+                                                                        #user
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader4")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                   tags$span(class="p-5", uiOutput("student_choice_header_content4"))
+                                                                        ),
+
+                                                                        #Q & A
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader5")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="cust-text", textOutput("student_choice_custText1")),
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_2"))
+                                                                        ),
+
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="cust-text", textOutput("student_choice_custText2")),
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_3"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_4"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="cust-text", textOutput("student_choice_custText3")),
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_5"))
+                                                                        ),
+
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader6")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_6"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_7"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_8"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_9"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_10"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_11"))
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_12"))
+                                                                        ),
+
+                                                                        tags$div(class="subtitle", style = "padding: 1% 15%",
+                                                                                 textOutput("student_choice_subHeader7")
+                                                                        ),
+                                                                        tags$div(class="text-content", style = "padding: 1% 15%",
+                                                                                tags$span(class="p-5", uiOutput("student_choice_header_content5_13"))
+                                                                        )
+                                                               )
+                                                      )
+                                               )#content end
+                                               
+                                             )
+                                  )
+                         ) #Student's Choice end
                          
                 )
               
@@ -491,12 +617,7 @@ server <- function(input, output) {
     ##############################################
     #project 2
     ##############################################
-    git_url_2 <- a("https://github.com/ychen856/cs424_project_2.git", href="https://github.com/ychen856/cs424_project_2.git")
-    r_url_2 <- a("https://www.r-project.org/", href="https://www.r-project.org/")
-    rStudio_url_2 <- a("https://rstudio.com/products/rstudio/", href="https://rstudio.com/products/rstudio/")
-    project_url_2 <- a("https://ychen514.shinyapps.io/cs424_project_2/", href="https://ychen514.shinyapps.io/cs424_project_2/")
-    video_url_2 <- a("https://youtu.be/GBBLsuShUsk", href="https://youtu.be/GBBLsuShUsk")
-    dataSource_url_2 <- a("https://www.epa.gov/egrid/download-data", href="https://www.epa.gov/egrid/download-data")
+
     #header
     output$Project2_header <- renderText({ 
         "Introduction and Description"
@@ -791,6 +912,185 @@ server <- function(input, output) {
                          
             ))
         })
+    })
+
+    ##############################################
+    #Student's choice
+    ##############################################
+
+    #header
+    output$student_choice_header <- renderText({ 
+        "Student's Choice Analyze"
+    })
+    
+    #Sub Header
+    output$student_choice_subHeader1 <- renderText({ 
+        "Purpose: "
+    })
+    output$student_choice_subHeader2 <- renderText({ 
+        "About the Data: "
+    })  
+    
+    output$student_choice_subHeader3 <- renderText({ 
+        "How Data Collected: "
+    })
+    output$student_choice_subHeader4 <- renderText({ 
+        "Who will be the user: "
+    })
+    output$student_choice_subHeader5 <- renderText({ 
+        "What can we ask and answer in the virtualization:"
+    })
+    output$student_choice_subHeader6 <- renderText({ 
+        "Features:"
+    })
+    output$student_choice_subHeader7 <- renderText({ 
+        "What Needs Improvement:"
+    })
+    
+    output$student_choice_custText1 <- renderText({
+        "Since the 5G network is popular recently. We may curious about where the 5G network starts covering? Is the countryside also construct this kind of network?"
+    })
+    output$student_choice_custText2 <- renderText({
+        "If a place has constructed a 5G network, does it means that that place has better internet speed?"
+    })
+    output$student_choice_custText3 <- renderText({ 
+        "If I travel to a new place, which service provider should I select?"
+    })
+
+    txt1_1 <- "In recent decades, wireless and mobile internet is more and more important. We care about the signal strength and transmission rate. We don't like slow or unstable internet. Therefore, we prefer to choose an internet service provider that has wide coverage and a great rate. \n
+                With this virtualization, we can have a great sense of which service provider and what kind of network cover in this area. \n
+                Also, we can learn the transmission rate in this area. \n
+                This virtualization allows us to see the data of most of the country. When we select the country and the internet service provider, we can see 2G, 3G, 4G, 4g+, and 5G coverage on the map in a different color. It also provides a bit rate data map. \n\n
+                The left picture is the topology of the first internet that was developed in 1969. And the right picture is the representation of the internet in 2005. \n\n"
+
+    txt2_2 <- "The data is from the user test results from the nPerf speed test app, so I download the app to check out what this application does and which information the company can learn from my test.\n
+                In my investigation, if we run the full speed test, the application can learn our technology (wifi, 2G, 3G, etc), service provider (which company provides the plan ), network (actual service provider), download rate, upload rate, and latency. \n 
+                And this virtualization is kind of real-time. The webpage says that the coverage map will be updated every hour. Speed up map will be updated every 15 minutes. Those data are displayed in the following two years. The oldest data is removed from the maps once a month. In my opinion, this is understandable, the network coverage will not change very fast. Sometimes it will take weeks, months, or years. While the rate data may change in a short time since the different levels of congestion may happen at any time. \n\n
+                The following photo is a screenshot from my phone, is the result of the nPerf speed test. In the photo, we can see what data the company can collect.\n\n"
+    
+    txt3_2 <- "The data was collected by nPerf company, which launched a network speed test application. And they gather those data from users of the nPerf app and display those test results in this virtualization.\n
+                The virtualization update time shows at the bottom left of the virtualization."
+    
+    txt4_2 <- "When we travel to a new country and stay a long while. We need a mobile phone number and cellular internet. However, we usually have no idea which service provider is can offer a fast and stable communication service. Although, every service provider posts their network coverage map on their website. It is tedious to check out all of them. Moreover, the transmission rate the service provider claims may be different in realizing because that data is ideal. \n  
+                Therefore, people who have no idea about which service they can choose, who want to know what is signal strength in areas, and who is interested in investigating the network can use this virtualization.\n"
+
+    txt5_1 <- "In common sense, we believe that big cities will first start to construct the 5G network. It can be proved in this virtualization. For example, the IL state. Since my service provider is T-mobile, so I select the T-mobile network coverage. Downtown Chicago has 5G and 4G+ coverage. The farther the location from the middle of the city, the network becomes 4G. \n\n"
+    txt5_2 <- "And see the other country, Taiwan. I use Taiwan mobile service, so we see its coverage virtualization. Most of the population is in the west because the east part full of high mountains. The 5G network is concentrating distributes at the west, other locations using 4G+, and a few places in the middle of the mountain using 4G network. \n\n"
+    txt5_3 <- "In this virtualization, we can see that the 5G coverage does not necessarily have a better speed but is probable agree. The network is complicated and there is a lot of factors that may affect the speed. Like, is many people are using and connecting to the same route? If many people are using the same route, there may have network congestion. How far you are from the base stating? If you are far from the base stating, your signal strength may be small and easy to be affected by noise. \n\n
+                The following is an area in Chicago, the upper is the network coverage virtualization, and the lower is the bit rate virtualization. The area in the black rectangle, the network is 5G, and the bit rate is around 1G. On the other hand, the area that the arrow points to also has a 5G network, but the bit rate is not as good as other areas. \n\n"
+    txt5_4 <- "Although the rate and network type may not totally agree with each other. If we zoom out to the whole US. The rate that reaches 1G mostly is the location that has a 5G network. However, this can not prove that the 5G network makes the bit rate faster even though it is the reason we switch to the 5G network. Because the 5G network locates in big cities, they may construct more networks than other areas. They have more base stations and more routing paths, so the signal can be more stable, the bandwidth can be wider, and less congestion. \n\n"
+    txt5_5 <- "With this virtualization, we can easily select a country and service providers. It can help us to make our decision. \n\n"
+    
+    txt5_6 <- "1. We can select different countries we want to investigate\n"
+    txt5_7 <- "2. We can select different service providers\n"
+    txt5_8 <- "3. We can choose Network coverage virtualization. This virtualization has a icon legend to represent different network types\n"
+    txt5_9 <- "4. We can choose Download bitrates virtualization. This virtualization has a legend from blue to red to represent the bit rate\n"
+    txt5_10 <- "5. The update time shows at the bottom left of the map\n"
+    txt5_11 <- "6. The map is zoomable, pinnable\n"
+    txt5_12 <- "7. There have two map type to choose\n"
+
+    txt5_13 <- "We can only select one country and one service provider at a time, so we cannot have a global view and the whole internet.\n\n"
+    txt5_14 <- "The distribution of the network coverage virtualization looks normal when zooming out, but when we have a closer view, we will find out that most of the data are in the middle of the road. I'm not sure is that because that most people test their internet outdoor, or they do some adjusting to the location.\n\n"
+    txt5_15 <- "The data source is not enough. Since the data is collected from the user of uPerf, some area that has less user using this application cannot represent the reality.\n\n"
+
+    output$tab2_2 <- renderUI({
+        tagList(video_url_2)
+    })
+    output$student_choice_header_pic <- renderUI({
+        tagList(list(img(src='img19.png', width = '100%')
+        ))
+    })
+    output$student_choice_header_content1 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1_1)), img(src='img25.png', width = '45%'), img(src='img23.png', width = '45%')
+        ))
+    })
+    output$student_choice_header_content2 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt2_2)), img(src='img24.png', width = '40%')
+        ))
+    })
+    output$student_choice_header_content3 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt3_2))
+        ))
+    })
+    output$student_choice_header_content4 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt4_2))
+        ))
+    })
+
+    output$student_choice_header_content5 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt5_1)), img(src='img26.png', width = '100%')
+        ))
+    })
+
+    output$student_choice_header_content5_2 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_2)), img(src='img27.png', width = '100%')
+        ))
+    })
+
+    output$student_choice_header_content5_3 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_3)), img(src='img29.png', width = '100%'), img(src='img28.png', width = '100%')
+        ))
+    })
+
+    output$student_choice_header_content5_4 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_4)), img(src='img30.png', width = '100%'), img(src='img31.png', width = '100%')
+        ))
+    })
+
+    output$student_choice_header_content5_5 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_5))
+        ))
+    })
+
+    output$student_choice_header_content5_6 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_6)), img(src='img32.png', width = '15%' )
+        ))
+    })
+
+    output$student_choice_header_content5_7 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_7)), img(src='img33.png', width = '15%' )
+        ))
+    })
+
+    output$student_choice_header_content5_8 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_8)), img(src='img34.png', width = '50%' )
+        ))
+    })
+
+    output$student_choice_header_content5_9 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_9)), img(src='img35.png', width = '50%' )
+        ))
+    })
+    output$student_choice_header_content5_10 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_10)), img(src='img38.png', width = '50%' )
+        ))
+    })
+
+    output$student_choice_header_content5_11 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_10))
+        ))
+    })
+    output$student_choice_header_content5_12 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_12)), img(src='img36.png', width = '40%'), img(src='img37.png', width = '40%')
+        ))
+    })
+    output$student_choice_header_content5_13 <- renderUI({
+        tagList(list(
+            shiny::HTML(gsub("\n", "<br/>", txt5_13)),
+            shiny::HTML(gsub("\n", "<br/>", txt5_14)),
+            shiny::HTML(gsub("\n", "<br/>", txt5_15))
+        ))
     })
 
 }
