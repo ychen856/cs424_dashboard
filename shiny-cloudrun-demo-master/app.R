@@ -200,7 +200,13 @@ ui <- fluidPage(
                                                                                    tags$span(class="p-5", uiOutput("student_choice_header_pic"))
                                                                                  )
                                                                         ),
-
+                                                                        tags$div(class="text-content", style = "padding: 2% 15%",
+                                                                                 tags$div(
+                                                                                   tags$span(class="cust-text", textOutput("student_custText1")),
+                                                                                   tags$span(class="p-5", uiOutput("student_video"))
+                                                                                )
+                                                                        ),
+                                                                        
                                                                         #purpose
                                                                         tags$div(class="subtitle", style = "padding: 1% 15%",
                                                                                  textOutput("student_choice_subHeader1")
@@ -617,6 +623,12 @@ server <- function(input, output) {
     ##############################################
     #project 2
     ##############################################
+    git_url_2 <- a("https://github.com/ychen856/cs424_project_2.git", href="https://github.com/ychen856/cs424_project_2.git")
+    r_url_2 <- a("https://www.r-project.org/", href="https://www.r-project.org/")
+    rStudio_url_2 <- a("https://rstudio.com/products/rstudio/", href="https://rstudio.com/products/rstudio/")
+    project_url_2 <- a("https://ychen514.shinyapps.io/cs424_project_2/", href="https://ychen514.shinyapps.io/cs424_project_2/")
+    video_url_2 <- a("https://youtu.be/GBBLsuShUsk", href="https://youtu.be/GBBLsuShUsk")
+    dataSource_url_2 <- a("https://www.epa.gov/egrid/download-data", href="https://www.epa.gov/egrid/download-data")
 
     #header
     output$Project2_header <- renderText({ 
@@ -917,7 +929,9 @@ server <- function(input, output) {
     ##############################################
     #Student's choice
     ##############################################
-
+    
+    student_choice_video_url <- a("https://youtu.be/na7XfpEWjyY", href="https://youtu.be/na7XfpEWjyY")
+    
     #header
     output$student_choice_header <- renderText({ 
         "Student's Choice Analyze"
@@ -947,6 +961,14 @@ server <- function(input, output) {
         "What Needs Improvement:"
     })
     
+    output$student_custText1 <- renderText({ 
+        "Video Link: "
+    })
+    output$student_video <- renderUI({
+        tagList(student_choice_video_url)
+    })
+
+
     output$student_choice_custText1 <- renderText({
         "Since the 5G network is popular recently. We may curious about where the 5G network starts covering? Is the countryside also construct this kind of network?"
     })
@@ -982,12 +1004,12 @@ server <- function(input, output) {
     txt5_5 <- "With this virtualization, we can easily select a country and service providers. It can help us to make our decision. \n\n"
     
     txt5_6 <- "1. We can select different countries we want to investigate\n"
-    txt5_7 <- "2. We can select different service providers\n"
+    txt5_7 <- "2. We can select different service providers. The service providers are corresponding to the country you select.\n"
     txt5_8 <- "3. We can choose Network coverage virtualization. This virtualization has a icon legend to represent different network types\n"
     txt5_9 <- "4. We can choose Download bitrates virtualization. This virtualization has a legend from blue to red to represent the bit rate\n"
     txt5_10 <- "5. The update time shows at the bottom left of the map\n"
     txt5_11 <- "6. The map is zoomable, pinnable\n"
-    txt5_12 <- "7. There have two map type to choose\n"
+    txt5_12 <- "7. There have two map types to choose. One is the simple map, and another is the detailed map\n"
 
     txt5_13 <- "We can only select one country and one service provider at a time, so we cannot have a global view and the whole internet.\n\n"
     txt5_14 <- "The distribution of the network coverage virtualization looks normal when zooming out, but when we have a closer view, we will find out that most of the data are in the middle of the road. I'm not sure is that because that most people test their internet outdoor, or they do some adjusting to the location.\n\n"
@@ -1077,7 +1099,7 @@ server <- function(input, output) {
 
     output$student_choice_header_content5_11 <- renderUI({
         tagList(list(
-            shiny::HTML(gsub("\n", "<br/>", txt5_10))
+            shiny::HTML(gsub("\n", "<br/>", txt5_11))
         ))
     })
     output$student_choice_header_content5_12 <- renderUI({
