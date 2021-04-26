@@ -170,6 +170,82 @@ ui <- fluidPage(
                                              )
                                   )
                          ), #project 2 page end
+                        #Total Amount page start
+                        tabPanel("Project 3", class="p-0",
+                                mainPanel( class="panel p-0",
+                                    fluidRow(
+                                                 
+                                        #Total Amount of Energy generation start
+                                        column(12, class="p-0",
+                                            tags$div(class="card border-title shadow",
+                                                #card Start
+                                                    tags$div(class="card-body",
+                                                        fluidRow(
+                                                            column(3, class="p-0  pl-10",
+                                                                tags$div(class="title",
+                                                                    tags$span(
+                                                                        textOutput("Project3_header")
+                                                                                       
+                                                                    )
+                                                                )
+                                                            ),
+                                                            column(9, class="p-0 pt-5",
+                                                                column(3,
+                                                                    tags$div(class="p-0 pt-5",
+                                                                        actionButton("prject3_btn1", "Introduction and Description")
+                                                                    ) 
+                                                                ),
+                                                                column(3,
+                                                                    tags$div(class="p-0  pt-5",
+                                                                        actionButton("prject3_btn2", "About the Data")
+                                                                   ) 
+                                                                ),
+                                                                column(3,
+                                                                    tags$div(class="p-0  pt-5",
+                                                                        actionButton("prject3_btn3", "Interesting Things")
+                                                                    ) 
+                                                                ),
+                                                                column(3,
+                                                                    tags$div(class="p-0 pt-5",
+                                                                        actionButton("prject3_btn4", "Source Code") 
+                                                                    ) 
+                                                                )
+                                                                                
+                                                            )
+                                                                        
+                                                        ), #Row End
+                                                        tags$div(class="subtitle", style = "padding: 2% 15%",
+                                                            textOutput("Project3_subHeader1")
+                                                        ),
+                                                        tags$div(class="text-content", style = "padding: 2% 15%",
+                                                            tags$div(
+                                                                tags$span(class="cust-text", textOutput("Project3_custText1")),
+                                                                tags$span(class="p-5", uiOutput("tab1_3"))
+                                                            )
+                                                        ),
+                                                        tags$div(class="subtitle", style = "padding: 2% 15%",
+                                                            textOutput("Project3_subHeader2")
+                                                        ),
+                                                        tags$div(class="text-content", style = "padding: 2% 15%",
+                                                            tags$div(
+                                                                tags$span(class="cust-text", textOutput("Project3_custText2")),
+                                                                tags$span(class="p-5", uiOutput("tab2_3")),
+                                                                tags$br(),tags$br(),
+                                                                tags$span(class="cust-text", textOutput("Project3_custText3")),
+                                                                tags$span(class="p-5", uiOutput("tab3_3")),
+                                                                tags$br(),tags$br(),
+                                                                tags$span(class="cust-text", textOutput("Project3_custText4")),
+                                                                tags$span(class="p-5", uiOutput("tab4_3")),
+                                                                              
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )#Total Amount of Energy Generation end
+                                                 
+                                        )
+                                    )
+                         ), #Total Amount page end 
                         #Student's Choice start
                          tabPanel("Student's Choice", class="p-0",
                                   mainPanel( class="panel p-0",
@@ -1113,6 +1189,342 @@ server <- function(input, output) {
             shiny::HTML(gsub("\n", "<br/>", txt5_14)),
             shiny::HTML(gsub("\n", "<br/>", txt5_15))
         ))
+    })
+
+
+    ##############################
+            # project 3
+    ##############################
+    ##########################################
+    #project 1
+    #####################################
+    git_url_3 <- a("https://github.com/ychen856/cs424_project_3.git", href="https://github.com/ychen856/cs424_project_3.git")
+    r_url_3 <- a("https://www.r-project.org/", "https://www.r-project.org/")
+    rStudio_url_3 <- a("https://rstudio.com/products/rstudio/", href="https://rstudio.com/products/rstudio/")
+    project_url_3 <- a("https://ychen514.shinyapps.io/cs424_project_3/", href="https://ychen514.shinyapps.io/cs424_project_3/")
+    video_url_3 <- a("https://youtu.be/y0PGkAf-6y4", href="https://youtu.be/y0PGkAf-6y4")
+    dataSource_url_3 <- a("https://data.cityofchicago.org/Environment-Sustainable-Development/Energy-Usage-2010/8yq3-m6wp", href="https://data.cityofchicago.org/Environment-Sustainable-Development/Energy-Usage-2010/8yq3-m6wp")
+    #header
+    output$Project3_header <- renderText({ 
+        "Introduction and Description"
+    })
+    
+    #Sub Header
+    output$Project3_subHeader1 <- renderText({ 
+        "Access the project: "
+    })
+    output$Project3_subHeader2 <- renderText({ 
+        "About this project: "
+    })  
+    
+    #cust text
+    output$Project3_custText1 <- renderText({ 
+        "Demo URL: "
+    })
+    output$Project3_custText2 <- renderText({ 
+        "Introduction Video: "
+    })
+    output$Project3_custText3 <- renderText({ 
+        ""
+    })
+    
+    output$Project3_custText4 <- renderText({ 
+        ""
+    })
+
+    txt3_1 <- "In this project, we provide census data in block-level and tract-level virtualization in Chicago. \n"
+    txt3_2 <- "\n\nOn the first page, we focus on the Near West Side community.  It allows you to select different data options to the virtualization map including Gas, Electricity, Building Age, Building Type, Building Height, Total Population, Average House Size, and Total Units. Each option has its own legend color. \n
+                    If you choose Electricity or Gas as the data options, it will allow you to select one of twelve different months or a whole year as the filter for virtualization. Even though the usage distribution is similar in different month options, you still can see the difference in the maximum and minimum values in the legend. \n
+                    If you choose Building Type as the data option, you can find it has three building types, commercial, residential, and industrial, each type presents in a layer. When you click on the layer option in the map, you can see in the default, all layers are selected. And you can click or unclick every layer to see the distribution clearer. \n
+                    The last option in the data filter is building type, but it is different usage as I mention above. It is used to filter the original data. For example, if you select Electricity, you will see the map present the electricity usage in all building types. If you want to have a closer look at the specific building type, you can filter out some building types by using this feature. \n
+                    Also, at the bottom left of this page, provides a chart for electricity and gas for each month of the year. At the right of the page, we have an electricity table and a gas table, which contain the data for each month. It is classified by building types, and the summation value at the bottom of the table is the same values that present in the chart. \n\n"
+    txt3_3 <- "\n\nOn page 2, the feature on the left of each card is the same as the first page. The purpose of this page is to let users compare two different community areas. In default, the left location is at Near West Side, and the right location is the Loop. Each card has a dropdown list for users to select a location they want to investigate. \n 
+                Also, we provide three legend color set in each map. Set 1 is the same legend color as the whole project. And set 2 and set 3 are in reverse order to each other. \n\n
+                Charts on each card are the same as page one, only, the data of the chart follows the current community area you select. \n\n"
+    
+    txt3_4 <- "\n\nOn page 3, it is tract-level virtualization in Chicago, all data filter logic is the same as previous pages. We only add few options in the first dropdown list. New options include 10% census tracts within the entire city with the oldest buildings, newest building, tallest buildings, blocks that use the most electricity over the year, blocks that use the most gas over the year, most population, most occupied percentage, and the highest percentage of renters. \n\n"
+    
+    output$tab1_3 <- renderUI({
+        tagList(project_url_3)
+    })
+    
+    output$tab2_3 <- renderUI({
+        tagList(video_url_3)
+    })
+    output$tab3_3 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt3_1)),
+                     shiny::HTML(gsub("\n", "<br/>", txt3_2, "\n")), img(src='img3_1.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt3_3, "\n")), img(src='img3_2.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt3_4, "\n")), img(src='img3_3.png', height = '300px')
+        ))
+    })
+    output$tab4_3 <- renderUI({
+        tagList(list(
+  
+        ))
+    })
+
+    ##################################################
+    #intro
+    observeEvent(input$prject3_btn1, { 
+        #header
+        output$Project3_header <- renderText({ 
+            "Introduction and Description"
+        })
+        
+        #Sub Header
+        output$Project3_subHeader1 <- renderText({ 
+            "Access the project: "
+        })
+        output$Project3_subHeader2 <- renderText({ 
+            "About this project: "
+        })  
+        
+        #cust text
+        output$Project3_custText1 <- renderText({ 
+            "Demo URL: "
+        })
+        output$Project3_custText2 <- renderText({ 
+            "Introduction Video: "
+        })
+        output$Project3_custText3 <- renderText({ 
+            ""
+        })
+        
+        output$Project3_custText4 <- renderText({ 
+            ""
+        })
+        
+        output$tab1_3 <- renderUI({
+            tagList(project_url_3)
+        })
+        
+        output$tab2_3 <- renderUI({
+            tagList(video_url_3)
+        })
+        output$tab3_3 <- renderUI({
+        tagList(list(shiny::HTML(gsub("\n", "<br/>", txt3_1)),
+                     shiny::HTML(gsub("\n", "<br/>", txt3_2, "\n")), img(src='img3_1.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt3_3, "\n")), img(src='img3_2.png', height = '300px'), 
+                     shiny::HTML(gsub("\n", "<br/>", txt3_4, "\n")), img(src='img3_3.png', height = '300px')
+        ))
+    })
+        output$tab4_3 <- renderUI({
+            tagList(list(
+                
+            ))
+        })
+    })
+    
+    #data
+    observeEvent(input$prject3_btn2, {
+        #header
+        output$Project3_header <- renderText({ 
+            "About the Data"
+        })
+        
+        #Sub Header
+        output$Project3_subHeader1 <- renderText({ 
+            ""
+        })
+        output$Project3_subHeader2 <- renderText({ 
+            ""
+        })  
+        
+        #cust text
+        output$Project3_custText1 <- renderText({ 
+            "Data Source: "
+        })
+        output$Project3_custText2 <- renderText({ 
+            "Data Usage: "
+        })
+        output$Project3_custText3 <- renderText({ 
+            ""
+        })
+        
+        output$Project3_custText4 <- renderText({ 
+            ""
+        })
+        
+        txt1 <- "The census data is from the Chicago data portal. The following is the description of the data that shows on the web page: \n\n
+                    Displays several units of energy consumption for households, businesses, and industries in the City of Chicago during 2010. Electric The data was aggregated from ComEd and Peoples Natural Gas by Accenture. Electrical and gas usage data comprises 88 percent of Chicago's buildings in 2010. The electricity data comprises 68 percent of overall electrical usage in the city while gas data comprises 81 percent of all gas consumption in Chicago for 2010. \n"
+        
+        txt2 <- "\n\nThis dataset contains 73 columns with 67.1K rows. We only use 34 of those columns including community area name, census block, building type, each month of electricity in a year, total electricity, each month of gas in a year, total gas, total population, total units, average stories, average building age, and average house size. \n\n"
+
+        txt3 <- "\n\nFor the map data, we use the Tigris library. Block-level and tract-level are all available. However, the region covered by this dataset is Cook county. Therefore, first, we have to eliminate those data that are not part of Chicago city. In this case, we have to delete data whose GEOID10 columns (which store the census block id data in the block-level dataset and census tract id in the tract-level dataset) do no exist in the census dataset, because the census dataset only contains census block id in Chicago. \n\n"
+        
+        txt4 <- "\n\nAt the tract level, we substring the census block data from the first position to the 11th position so it is able to map back to the Tigris tract data. Since the logic of the census id is:
+                    XX|XXX|XXXXXX|XXXX \n
+                    * The first two digits represent the state 
+                    * The 3~5 digits represent the county
+                    * The 6~11 digits represent the tract
+                    * And the 12~15 digits represent the block\n\n"
+
+        txt5 <- "\n\nSince the original census data are pretty large, also there are over 10000 census blocks in Chicago. For me, I prefer to read the user community area input option first. Only collect census data in that community area, and extract the census block data. After this, we can do the process I mentioned earlier to efficiently decrease the data size. \n\n"
+        
+        txt6 <- "\n\nOne census block may have multiple rows of data that are separated by building type, but the heat map should show the aggregate value of all building types in a census block. Some options have to use the mean method and some options have to use the sum method in an aggregate function. Also, because some cells are empty, we need to set remove null to true otherwise the aggregate function will ignore the whole column and set the result to null.   \n"
+        
+        output$tab1_3 <- renderUI({
+            tagList(dataSource_url_3)
+        })
+        
+        output$tab2_3 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), 
+                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img3_4.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img3_5.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img3_6.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt5)),
+                         shiny::HTML(gsub("\n", "<br/>", txt6))
+            ))
+        })
+        output$tab3_3 <- renderUI({
+        })
+        output$tab4_3 <- renderUI({
+        })
+    })
+    
+    #interesting things
+    observeEvent(input$prject3_btn3, {
+        output$Project3_header <- renderText({ 
+            "Interesting Things"
+        })
+        #header
+        output$Project3_header <- renderText({ 
+            "5 Interesting Things"
+        })
+        
+        #Sub Header
+        output$Project3_subHeader1 <- renderText({ 
+            ""
+        })
+        output$Project3_subHeader2 <- renderText({ 
+            ""
+        })  
+        
+        #cust text
+        output$Project3_custText1 <- renderText({ 
+            ""
+        })
+        output$Project3_custText2 <- renderText({ 
+            ""
+        })
+        output$Project3_custText3 <- renderText({ 
+            ""
+        })
+        
+        output$Project3_custText4 <- renderText({ 
+            ""
+        })
+        
+        txt1 <- "The distribution of electricity in the near west side is extreme. One census block reaches the highest value in legend, most of the other census blocks their electricity are a super light color which means small in legend (left).
+                    If you change the month and building type options, you can find out their color distribution area all similar but various in different building types. I filtered the map by the building type, and find out the most electricity block is different from other census blocks, it also includes industrial usage. (right)\n\n"
+        
+        txt2 <- "\n\n\n\nThe gas distribution at the near west side also has the same circumstances as the electricity case.  The highest gas is for commercial. However, it is new for me that a block that is not large compares to others their commercial buildings can have the highest electricity usage over a whole community.  \n\n"
+        
+        txt3 <- "\n\n\n\nElectricity & gas charts for every community, their trend are similar. Even though there may have slightly different. In some communities, the highest point of electricity happens in the winter, and some communities happen in summer, but they all follow the same rule. The peaks for electricity are in the summer and the winter seasons. And the lowest part for gas is in the summer season. The following images are some examples.\n\n"
+        
+        txt4 <- "\n\n\n\nSome census blocks look weird for me. For example, in North Lawndale, a block is far from other blocks (left). And this also happens in McKinley Park (mid). I use the command line to search the actual census data of this census block id (right & bottom). I find out this census block is actually located in the North Center community, but one row shows that it is in the McKinley Park community. Therefore, when I use the census block id to map the shapefile, some strange blocks appeared. I'm not sure if it is the inaccurate part of the census data, or actually, this thing happens. For me, I think because the shapefile does not contain community area information, we have to map two data files by their block id, so it is hard to achieve 100% correct. \n\n"
+        
+        
+        output$tab1_3 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img3_8.png', height = '300px'), img(src='img3_9.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img3_10.png', height = '300px'), img(src='img3_11.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img3_12.png', height = '300px'), img(src='img3_13.png', height = '300px'), img(src='img3_14.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img3_15.png', height = '500px'), img(src='img3_16.png', height = '500px'), img(src='img3_17.png', height = '300px'), img(src='img3_18.png', height = '300px')
+            ))
+        })
+        
+        output$tab2_3 <- renderUI({
+           
+        })
+        output$tab3_3 <- renderUI({
+            
+        })
+        output$tab4_3 <- renderUI({
+            
+        })
+        
+    })
+    
+    #source code
+    observeEvent(input$prject3_btn4, {
+        #header
+        output$Project3_header <- renderText({ 
+            "Source Code"
+        })
+        
+        #Sub Header
+        output$Project3_subHeader1 <- renderText({ 
+            "Source"
+        })
+        output$Project3_subHeader2 <- renderText({ 
+            "SetUp"
+        })  
+        
+        #cust text
+        output$Project3_custText1 <- renderText({ 
+            "Github Repository: "
+        })
+        output$Project3_custText2 <- renderText({ 
+            "Install R: "
+        })
+        output$Project3_custText3 <- renderText({ 
+            "Install Shiny: "
+        })
+        output$Project3_custText4 <- renderText({ 
+            "Setup The Project: "
+        })
+        
+        output$tab1_3 <- renderUI({
+            tagList(git_url_3)
+        })
+        txt1 <- ". Click \"download R\".\n"
+        txt2 <- "\n\nYou can select the default link \"0-Cloud\".\n"
+        txt3 <- "\n\nDownload and install a version that match you OS.\n"
+        
+        txt4 <- "\n"
+        txt5 <- "\n\nYou and down load the free version.\n"
+
+        txt6 <- "Create a workspace folder that you want the project lacate at. Open the termial, set the direction the the created folder. Run the commendline \"git clone https://github.com/ychen856/cs424_project_3.git\". \n"
+        txt7 <- "\n\nOpen the R studio and open the exixting file -> import cs424. \n Rstudio will tell you that you are missing some packages, click the auto install on the top of the frame to set them up. 
+                Since we use the Mapview and the Tigris library this time, we need manually install some packages before running the project to make libraries fully utilized.\n
+
+                Tigris library:
+
+                To install the package from CRAN, issue the following command in R:
+                    install.packages('tigris') \n
+                Or, get the development version from GitHub:
+                devtools::install_github('walkerke/tigris') \n
+
+                In my case, I install both of them because some issues in the former one may be fixed in the latter package. \n\n
+
+                Mapview library:
+
+                For the CRAN release version of the Mapview use:
+                install.packages(\"mapview\")\n
+                To install the development version you can install the remotes package:
+                remotes::install_github(\"r-spatial/mapview\") \n
+
+                And I also run both of the instructions.
+        
+        Then, you can click the \"Run App\" to start a localhost shiny project.\n\n"
+        output$tab2_3 <- renderUI({
+            tagList(list("Download the R from", r_url, shiny::HTML(gsub("\n", "<br/>", txt1)), img(src='img2.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt2)), img(src='img3.png', height = '300px'),
+                         shiny::HTML(gsub("\n", "<br/>", txt3)), img(src='img4.png', height = '300px')
+            ))
+        })
+        output$tab3_3 <- renderUI({
+            tagList(list("Download R studio from", rStudio_url, shiny::HTML(gsub("\n", "<br/>", txt4)), img(src='img5.png', height = '300px'), 
+                         shiny::HTML(gsub("\n", "<br/>", txt5)), img(src='img6.png', height = '300px')
+            ))
+        })
+        output$tab4_3 <- renderUI({
+            tagList(list(shiny::HTML(gsub("\n", "<br/>", txt6)), 
+                         shiny::HTML(gsub("\n", "<br/>", txt7)), img(src='img3_7.png', height = '300px')
+                         
+            ))
+        })
     })
 
 }
